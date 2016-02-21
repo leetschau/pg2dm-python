@@ -6,8 +6,6 @@
 #  Ron Zacharski
 #
 
-from math import sqrt
-
 users = {"Angelica": {"Blues Traveler": 3.5, "Broken Bells": 2.0, "Norah Jones": 4.5, "Phoenix": 5.0, "Slightly Stoopid": 1.5, "The Strokes": 2.5, "Vampire Weekend": 2.0},
          "Bill":{"Blues Traveler": 2.0, "Broken Bells": 3.5, "Deadmau5": 4.0, "Phoenix": 2.0, "Slightly Stoopid": 3.5, "Vampire Weekend": 3.0},
          "Chan": {"Blues Traveler": 5.0, "Broken Bells": 1.0, "Deadmau5": 1.0, "Norah Jones": 3.0, "Phoenix": 5, "Slightly Stoopid": 1.0},
@@ -17,7 +15,6 @@ users = {"Angelica": {"Blues Traveler": 3.5, "Broken Bells": 2.0, "Norah Jones":
          "Sam": {"Blues Traveler": 5.0, "Broken Bells": 2.0, "Norah Jones": 3.0, "Phoenix": 5.0, "Slightly Stoopid": 4.0, "The Strokes": 5.0},
          "Veronica": {"Blues Traveler": 3.0, "Norah Jones": 5.0, "Phoenix": 4.0, "Slightly Stoopid": 2.5, "The Strokes": 3.0}
         }
-
 
 
 def manhattan(rating1, rating2):
@@ -35,7 +32,7 @@ def manhattan(rating1, rating2):
         return -1 #Indicates no ratings in common
 
 
-def computeNearestNeighbor(username, users):
+def compute_nearest_neighbor(username, users):
     """creates a sorted list of users based on their distance to username"""
     distances = []
     for user in users:
@@ -46,10 +43,11 @@ def computeNearestNeighbor(username, users):
     distances.sort()
     return distances
 
+
 def recommend(username, users):
     """Give list of recommendations"""
     # first find nearest neighbor
-    nearest = computeNearestNeighbor(username, users)[0][1]
+    nearest = compute_nearest_neighbor(username, users)[0][1]
 
     recommendations = []
     # now find bands neighbor rated that user didn't
