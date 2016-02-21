@@ -36,7 +36,7 @@ class Classifier:
                 f = open(filename)
                 lines = f.readlines()
                 f.close()
-                for line in lines[1:]:
+                for line in lines[0:]:
                     fields = line.strip().split('\t')
                     ignore = []
                     vector = []
