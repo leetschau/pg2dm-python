@@ -21,15 +21,15 @@ def manhattan(rating1, rating2):
     """Computes the Manhattan distance. Both rating1 and rating2 are dictionaries
        of the form {'The Strokes': 3.0, 'Slightly Stoopid': 2.5}"""
     distance = 0
-    commonRatings = False 
+    common_ratings = False
     for key in rating1:
         if key in rating2:
             distance += abs(rating1[key] - rating2[key])
-            commonRatings = True
-    if commonRatings:
+            common_ratings = True
+    if common_ratings:
         return distance
     else:
-        return -1 #Indicates no ratings in common
+        return -1    # Indicates no ratings in common
 
 
 def compute_nearest_neighbor(username, users):
@@ -51,15 +51,12 @@ def recommend(username, users):
 
     recommendations = []
     # now find bands neighbor rated that user didn't
-    neighborRatings = users[nearest]
-    userRatings = users[username]
-    for artist in neighborRatings:
-        if not artist in userRatings:
-            recommendations.append((artist, neighborRatings[artist]))
+    neighbor_ratings = users[nearest]
+    user_ratings = users[username]
+    for artist in neighbor_ratings:
+        if artist not in user_ratings:
+            recommendations.append((artist, neighbor_ratings[artist]))
     # using the fn sorted for variety - sort is more efficient
-    return sorted(recommendations, key=lambda artistTuple: artistTuple[1], reverse = True)
+    return sorted(recommendations, key=lambda artist_tuple: artist_tuple[1], reverse = True)
 
-# examples - uncomment to run
-
-print( recommend('Hailey', users))
-#print( recommend('Chan', users))
+print(recommend('Hailey', users))

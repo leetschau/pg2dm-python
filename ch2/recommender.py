@@ -38,8 +38,7 @@ users = {"Angelica": {"Blues Traveler": 3.5, "Broken Bells": 2.0,
         }
 
 
-
-class recommender:
+class Recommender:
 
     def __init__(self, data, k=1, metric='pearson', n=5):
         """ initialize recommender
@@ -240,3 +239,8 @@ class recommender:
        # Return the first n items
        return recommendations[:self.n]
 
+r = Recommender(users)
+rj = r.recommend('Jordyn')
+print rj
+rh = r.recommend('Hailey')
+print rh
